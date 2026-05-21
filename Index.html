@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>C-Firefly | Portfolio</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:black;
+    color:#00c3ff;
+    font-family:monospace;
+    overflow-x:hidden;
+}
+
+/* ================= MATRIX ================= */
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+    padding:30px 20px;
+}
+
+/* ================= COMMON BOX ================= */
+
+.box{
+    width:100%;
+    background:rgba(0,0,0,0.72);
+
+    border:1px solid rgba(0,195,255,0.35);
+    border-radius:16px;
+
+    padding:22px;
+
+    margin-bottom:24px;
+
+    backdrop-filter:blur(6px);
+
+    box-shadow:
+    0 0 10px rgba(0,195,255,0.18),
+    0 0 30px rgba(0,195,255,0.08);
+
+    transition:0.3s ease;
+}
+
+.box:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 15px rgba(0,195,255,0.35),
+    0 0 35px rgba(0,195,255,0.12);
+}
+
+/* ================= TOP SECTION ================= */
+
+.top-section{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:30px;
+}
+
+/* LEFT SIDE */
+
+.info{
+    flex:1;
+    text-align:left;
+}
+
+.info h1{
+    font-size:3rem;
+    margin-bottom:10px;
+    color:#00d9ff;
+}
+
+.info h2{
+    font-size:1.3rem;
+    margin-bottom:15px;
+    color:#8be9ff;
+}
+
+.info p{
+    font-size:15px;
+    line-height:1.8;
+    color:#c7f6ff;
+}
+
+/* PROFILE IMAGE */
+
+.profile-pic{
+    width:170px;
+    height:170px;
+
+    border-radius:16px;
+
+    background:
+    url('images/profile/portfolio_img.png')
+    center/cover no-repeat;
+
+    border:1px solid rgba(0,195,255,0.4);
+
+    box-shadow:
+    0 0 12px rgba(0,195,255,0.35);
+
+    flex-shrink:0;
+}
+
+/* ================= TERMINAL TEXT ================= */
+
+.terminal{
+    margin-top:16px;
+}
+
+#typing{
+    color:#00ff88;
+    font-size:15px;
+    font-weight:bold;
+    text-align: center;
+}
+
+#typing::after{
+    content:"!";
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+/* ================= CONTENT BOX ================= */
+
+.box-title{
+    font-size:1.3rem;
+    margin-bottom:14px;
+    color:#00e1ff;
+    text-align: center;
+}
+
+.box-text{
+    color:#d7f8ff;
+    line-height:1.8;
+    font-size:15px;
+    text-align: center;
+}
+
+/* ================= BUTTONS ================= */
+
+.buttons{
+    width:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    margin-top:50px;
+}
+
+.btn{
+    text-decoration:none;
+
+    color:#00d9ff;
+
+    padding:13px 28px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(0,195,255,0.45);
+
+    background:rgba(0,0,0,0.75);
+
+    font-size:15px;
+    font-weight:bold;
+
+    letter-spacing:0.5px;
+
+    transition:0.3s ease;
+
+    min-width:150px;
+    text-align:center;
+
+    box-shadow:
+    0 0 10px rgba(0,195,255,0.15);
+}
+
+.btn:hover{
+    background:#00c3ff;
+    color:black;
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 0 12px #00c3ff,
+    0 0 28px #00c3ff;
+}
+
+/* ================= MOBILE ================= */
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+    .top-section{
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:flex-start;
+        gap:14px;
+    }
+
+    .info{
+        flex:1;
+    }
+
+    .profile-pic{
+        width:80px;
+        height:80px;
+
+        border-radius:12px;
+
+        flex-shrink:0;
+    }
+
+    .info h1{
+        font-size:2rem;
+    }
+
+    .info h2{
+        font-size:1rem;
+    }
+
+    .info p{
+        font-size:13px;
+    }
+
+}
+
+    .box{
+        padding:18px;
+    }
+/* ================= MOBILE BUTTONS ================= */
+
+    .buttons{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-wrap:nowrap;
+
+        gap:8px;
+    }
+
+    .btn{
+        width:auto;
+        min-width:auto;
+
+        padding:10px 12px;
+
+        font-size:12px;
+
+        flex:1;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+
+    <!-- HERO BOX -->
+
+    <div class="box">
+
+        <div class="top-section">
+
+            <div class="info">
+
+                <h1>C-Firefly</h1>
+
+                <h2>→ Md Towhid</h2>
+
+                <p>
+                    A cyber learner. I learn to gather knowledge and protect privacy.
+                </p>
+
+                <div class="terminal">
+                    <p id="typing"></p>
+                </div>
+
+            </div>
+
+            <div class="profile-pic"></div>
+
+        </div>
+
+    </div>
+
+    <!-- ABOUT -->
+
+    <div class="box">
+
+        <h3 class="box-title">Who am I ?</h3>
+
+        <p class="box-text">
+            Developer • Bot Creator • Automation Lover
+        </p>
+
+    </div>
+
+    <!-- SKILLS -->
+
+    <div class="box">
+
+        <h3 class="box-title">Skills</h3>
+
+        <p class="box-text">
+            Python • Linux • Termux • GitHub • APIs
+        </p>
+
+    </div>
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+
+        <a href="https://github.com/C-firefly" class="btn">
+            Git Profile
+        </a>
+
+        <a href="abc.html" class="btn">
+            Projects
+        </a>
+
+        <a href="abc.html" class="btn">
+            Articles
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ================= MATRIX EFFECT ================= */
+
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+let fontSize;
+let columns;
+let drops;
+
+function initMatrix(){
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    fontSize = window.innerWidth < 768 ? 10 : 14;
+
+    columns = Math.floor(canvas.width / fontSize);
+
+    drops = [];
+
+    for(let i = 0; i < columns; i++){
+        drops[i] = 1;
+    }
+}
+
+function drawMatrix(){
+
+    ctx.fillStyle = "rgba(0,0,0,0.06)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle = "#00ff88";
+    ctx.font = fontSize + "px monospace";
+
+    for(let i = 0; i < drops.length; i++){
+
+        const text = "01XYZABC";
+        const char = text[Math.floor(Math.random() * text.length)];
+
+        ctx.fillText(
+            char,
+            i * fontSize,
+            drops[i] * fontSize
+        );
+
+        if(
+            drops[i] * fontSize > canvas.height
+            &&
+            Math.random() > 0.975
+        ){
+            drops[i] = 0;
+        }
+
+        drops[i]++;
+    }
+}
+
+window.addEventListener("resize", initMatrix);
+
+initMatrix();
+
+setInterval(drawMatrix, 35);
+
+/* ================= TYPING EFFECT ================= */
+
+const text =
+"I believe willpower leads to success.";
+
+let i = 0;
+
+function typingEffect(){
+
+    if(i < text.length){
+
+        document.getElementById("typing").innerHTML += text.charAt(i);
+
+        i++;
+
+        setTimeout(typingEffect, 50);
+    }
+}
+
+typingEffect();
+
+</script>
+
+</body>
+</html>
