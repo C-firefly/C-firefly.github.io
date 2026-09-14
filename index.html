@@ -1,457 +1,334 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>C-Firefly | Portfolio</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    background:black;
-    color:#00c3ff;
-    font-family:monospace;
-    overflow-x:hidden;
-}
-
-/* ================= MATRIX ================= */
-
-canvas{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:-1;
-}
-
-/* ================= CONTAINER ================= */
-
-.container{
-    width:100%;
-    max-width:1100px;
-    margin:auto;
-    padding:30px 20px;
-}
-
-/* ================= COMMON BOX ================= */
-
-.box{
-    width:100%;
-    background:rgba(0,0,0,0.72);
-
-    border:1px solid rgba(0,195,255,0.35);
-    border-radius:16px;
-
-    padding:22px;
-
-    margin-bottom:24px;
-
-    backdrop-filter:blur(6px);
-
-    box-shadow:
-    0 0 10px rgba(0,195,255,0.18),
-    0 0 30px rgba(0,195,255,0.08);
-
-    transition:0.3s ease;
-}
-
-.box:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-    0 0 15px rgba(0,195,255,0.35),
-    0 0 35px rgba(0,195,255,0.12);
-}
-
-/* ================= TOP SECTION ================= */
-
-.top-section{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:30px;
-}
-
-/* LEFT SIDE */
-
-.info{
-    flex:1;
-    text-align:left;
-}
-
-.info h1{
-    font-size:3rem;
-    margin-bottom:10px;
-    color:#00d9ff;
-}
-
-.info h2{
-    font-size:1.3rem;
-    margin-bottom:15px;
-    color:#8be9ff;
-}
-
-.info p{
-    font-size:15px;
-    line-height:1.8;
-    color:#c7f6ff;
-}
-
-/* PROFILE IMAGE */
-
-.profile-pic{
-    width:170px;
-    height:170px;
-
-    border-radius:16px;
-
-    background:
-    url('images/profile/portfolio_img.png')
-    center/cover no-repeat;
-
-    border:1px solid rgba(0,195,255,0.4);
-
-    box-shadow:
-    0 0 12px rgba(0,195,255,0.35);
-
-    flex-shrink:0;
-}
-
-/* ================= TERMINAL TEXT ================= */
-
-.terminal{
-    margin-top:16px;
-}
-
-#typing{
-    color:#ff0000;
-    font-size:15px;
-    font-weight:bold;
-    text-align: center;
-}
-
-#typing::after{
-    content:"!";
-    animation:blink 1s infinite;
-}
-
-@keyframes blink{
-    50%{
-        opacity:0;
-    }
-}
-
-/* ================= CONTENT BOX ================= */
-
-.box-title{
-    font-size:1.3rem;
-    margin-bottom:14px;
-    color:#00e1ff;
-    text-align: center;
-}
-
-.box-text{
-    color:#d7f8ff;
-    line-height:1.8;
-    font-size:15px;
-    text-align: center;
-}
-
-/* ================= BUTTONS ================= */
-
-.buttons{
-    width:100%;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-
-    gap:18px;
-
-    margin-top:50px;
-}
-
-.btn{
-    text-decoration:none;
-
-    color:#00d9ff;
-
-    padding:13px 28px;
-
-    border-radius:12px;
-
-    border:1px solid rgba(0,195,255,0.45);
-
-    background:rgba(0,0,0,0.75);
-
-    font-size:15px;
-    font-weight:bold;
-
-    letter-spacing:0.5px;
-
-    transition:0.3s ease;
-
-    min-width:150px;
-    text-align:center;
-
-    box-shadow:
-    0 0 10px rgba(0,195,255,0.15);
-}
-
-.btn:hover{
-    background:#00c3ff;
-    color:black;
-
-    transform:translateY(-4px);
-
-    box-shadow:
-    0 0 12px #00c3ff,
-    0 0 28px #00c3ff;
-}
-
-/* ================= MOBILE ================= */
-/* ================= MOBILE ================= */
-
-@media(max-width:768px){
-
-    .top-section{
-        flex-direction:row;
-        justify-content:space-between;
-        align-items:flex-start;
-        gap:14px;
-    }
-
-    .info{
-        flex:1;
-    }
-
-    .profile-pic{
-        width:80px;
-        height:80px;
-
-        border-radius:12px;
-
-        flex-shrink:0;
-    }
-
-    .info h1{
-        font-size:2rem;
-    }
-
-    .info h2{
-        font-size:1rem;
-    }
-
-    .info p{
-        font-size:13px;
-    }
-
-}
-
-    .box{
-        padding:18px;
-    }
-/* ================= MOBILE BUTTONS ================= */
-
-    .buttons{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        flex-wrap:nowrap;
-
-        gap:8px;
-    }
-
-    .btn{
-        width:auto;
-        min-width:auto;
-
-        padding:10px 12px;
-
-        font-size:12px;
-
-        flex:1;
-    }
-
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="C-Firefly, a cinematic developer portfolio for Towhid.">
+  <title>C-Firefly | Towhid</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
-<canvas id="matrix"></canvas>
+  <div class="scene" aria-hidden="true">
+    <div class="sky"></div>
+    <div class="moon"></div>
+    <div class="sun"></div>
+    <div class="cloud cloud-one"></div>
+    <div class="cloud cloud-two"></div>
+    <div class="mountains"></div>
+    <div class="forest forest-back"></div>
+    <div class="forest forest-mid"></div>
+    <div class="forest forest-front"></div>
+    <div class="mist mist-one"></div>
+    <div class="mist mist-two"></div>
+    <div class="stars"></div>
+    <div class="birds birds-one"></div>
+    <div class="birds birds-two"></div>
+    <div class="firefly-field" id="fireflyField"></div>
+    <div class="grain"></div>
+  </div>
 
-<div class="container">
+  <header class="site-header">
+    <a class="brand" href="#intro" aria-label="C-Firefly home">
+      <span class="brand-mark">C</span>
+      <span>C-Firefly</span>
+    </a>
 
-    <!-- HERO BOX -->
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a class="nav-link active" href="#intro" data-section="intro">Home</a>
+      <a class="nav-link" href="#story" data-section="story">My Story</a>
+      <a class="nav-link" href="#skills" data-section="skills">Skills</a>
+      <a class="nav-link" href="#contact" data-section="contact">Contact</a>
+    </nav>
 
-    <div class="box">
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
+  </header>
 
-        <div class="top-section">
+  <aside class="mobile-nav" aria-label="Mobile navigation">
+    <a class="nav-link active" href="#intro" data-section="intro">Home</a>
+    <a class="nav-link" href="#story" data-section="story">My Story</a>
+    <a class="nav-link" href="#skills" data-section="skills">Skills</a>
+    <a class="nav-link" href="#contact" data-section="contact">Contact</a>
+  </aside>
 
-            <div class="info">
+  <button class="theme-toggle" type="button" aria-label="Switch to day mode" aria-pressed="false">
+    <span class="theme-icon moon-icon"></span>
+    <span class="theme-icon sun-icon"></span>
+    <span class="toggle-knob"></span>
+  </button>
 
-                <h1>C-Firefly</h1>
+  <main class="page">
+    <!-- =========================
+         INTRO
+    ========================== -->
+    <section class="section intro-section" id="intro" data-section-name="intro">
+      <div class="section-number">01 / 04</div>
 
-                <h2>→ Md Towhid</h2>
-
-                <p>
-                    A cyber learner. I learn to gather knowledge and protect privacy.
-                </p>
-                <p style="color:#00ff00;">I believe willpower leads to success.</p>
-
-                <div class="terminal">
-                    <p id="typing"></p>
-                </div>
-
-            </div>
-
-            <div class="profile-pic"></div>
-
+      <div class="intro-content">
+        <div class="profile-wrap reveal">
+          <div class="profile-ring"></div>
+          <img class="profile-image" src="assets/profile.png" alt="Towhid profile placeholder">
+          <span class="profile-status">available to build</span>
         </div>
 
-    </div>
+        <div class="eyebrow reveal">developer / learner / builder</div>
 
-    <!-- ABOUT -->
+        <h1 class="hero-title reveal">
+          <span class="title-c">
+            C
+            <span class="signature-firefly" aria-hidden="true">
+              <span class="fly-body"></span>
+              <span class="fly-wing wing-left"></span>
+              <span class="fly-wing wing-right"></span>
+              <span class="fly-trail"></span>
+            </span>
+          </span><span>-Firefly</span>
+        </h1>
 
-    <div class="box">
+        <p class="hero-name reveal">Towhid</p>
 
-        <h3 class="box-title">Who am I ?</h3>
-
-        <p class="box-text">
-            Developer • Bot Creator • Automation Lover
+        <p class="hero-description reveal">
+          I explore the space where code, curiosity and automation meet.
         </p>
 
-    </div>
+        <div class="hero-actions reveal">
+          <a class="button button-primary" href="#story">Enter the story <span>↘</span></a>
+          <a class="button button-ghost" href="#contact">Let's connect <span>↗</span></a>
+        </div>
 
-    <!-- SKILLS -->
+        <div class="hero-meta reveal">
+          <span><i></i> exploring from mobile</span>
+          <span>scroll to wander</span>
+        </div>
+      </div>
 
-    <div class="box">
+      <div class="night-workspace" aria-label="Night coding workspace">
+        <div class="desk-light"></div>
+        <div class="desk"></div>
+        <div class="laptop">
+          <div class="laptop-screen">
+            <span>const</span> curiosity = <b>true</b>;<br>
+            <span>while</span> (curiosity) {<br>
+            &nbsp;&nbsp;build();
+          </div>
+        </div>
+        <div class="coffee">
+          <div class="steam steam-one"></div>
+          <div class="steam steam-two"></div>
+          <div class="cup"></div>
+        </div>
+        <img class="character character-night" src="assets/character-night.png" alt="Night coding character placeholder">
+      </div>
 
-        <h3 class="box-title">Skills</h3>
+      <div class="scroll-cue"><span></span> scroll to explore</div>
+    </section>
 
-        <p class="box-text">
-            Python • Linux • Termux • GitHub • APIs
-        </p>
+    <!-- =========================
+         MY STORY
+    ========================== -->
+    <section class="section story-section" id="story" data-section-name="story">
+      <div class="section-number">02 / 04</div>
 
-    </div>
+      <div class="section-heading reveal">
+        <div class="eyebrow">a path through the trees</div>
+        <h2>My <em>Story</em></h2>
+        <p>From curiosity to code.</p>
+      </div>
 
-    <!-- BUTTONS -->
+      <div class="story-layout">
+        <div class="story-copy glass-panel reveal">
+          <span class="panel-label">FIELD NOTES / 001</span>
+          <p>
+            My journey is still being written. I started with questions, followed them into code,
+            and kept building small experiments to understand how digital systems connect.
+          </p>
+          <p class="editable-note">
+            [Replace this paragraph with your real coding journey, milestones and personal goals.]
+          </p>
+          <div class="signature">— Towhid</div>
+        </div>
 
-    <div class="buttons">
+        <div class="timeline" aria-label="Developer journey timeline">
+          <article class="timeline-item reveal">
+            <span class="timeline-marker">01</span>
+            <div>
+              <small>BEGINNING / EDITABLE</small>
+              <h3>Curiosity arrived first</h3>
+              <p>[Add how you first became interested in technology and coding.]</p>
+            </div>
+          </article>
 
-        <a href="https://github.com/C-firefly" class="btn">
-            Git Profile
-        </a>
+          <article class="timeline-item reveal">
+            <span class="timeline-marker">02</span>
+            <div>
+              <small>FIRST CODE / EDITABLE</small>
+              <h3>Learning by making</h3>
+              <p>[Add the first language, tutorial or project that made code feel real.]</p>
+            </div>
+          </article>
 
-        <a href="project_page.html" class="btn">
-            Projects
-        </a>
+          <article class="timeline-item reveal">
+            <span class="timeline-marker">03</span>
+            <div>
+              <small>EXPLORING / EDITABLE</small>
+              <h3>Systems behind the screen</h3>
+              <p>Linux, Termux, networking and cybersecurity became places to investigate.</p>
+            </div>
+          </article>
 
-        <a href="https://c-firefly.github.io/Article/index.html" class="btn">
-            Articles
-        </a>
+          <article class="timeline-item reveal">
+            <span class="timeline-marker">04</span>
+            <div>
+              <small>NOW / EDITABLE</small>
+              <h3>Building useful connections</h3>
+              <p>Focused on web development, APIs, automation and experiments that solve real problems.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- =========================
+         SKILLS
+    ========================== -->
+    <section class="section skills-section" id="skills" data-section-name="skills">
+      <div class="section-number">03 / 04</div>
 
-</div>
+      <div class="section-heading reveal">
+        <div class="eyebrow">the tools around the campfire</div>
+        <h2>My <em>Skills</em></h2>
+        <p>Tools I work with and systems I want to understand.</p>
+      </div>
 
-<script>
+      <div class="skills-layout">
+        <div class="skill-cloud">
+          <article class="skill-card reveal">
+            <span class="skill-icon">&lt;/&gt;</span>
+            <h3>HTML</h3>
+            <p>Structure</p>
+          </article>
+          <article class="skill-card reveal">
+            <span class="skill-icon">#</span>
+            <h3>CSS</h3>
+            <p>Interfaces</p>
+          </article>
+          <article class="skill-card reveal">
+            <span class="skill-icon">JS</span>
+            <h3>JavaScript</h3>
+            <p>Interaction</p>
+          </article>
+          <article class="skill-card reveal">
+            <span class="skill-icon">Py</span>
+            <h3>Python</h3>
+            <p>Logic</p>
+          </article>
+          <article class="skill-card reveal">
+            <span class="skill-icon">A</span>
+            <h3>Acode</h3>
+            <p>Mobile IDE</p>
+          </article>
+          <article class="skill-card reveal">
+            <span class="skill-icon">$</span>
+            <h3>Termux</h3>
+            <p>Terminal</p>
+          </article>
+          <article class="skill-card reveal">
+            <span class="skill-icon">↗</span>
+            <h3>GitHub</h3>
+            <p>Projects</p>
+          </article>
+          <article class="skill-card reveal">
+            <span class="skill-icon">✺</span>
+            <h3>APIs</h3>
+            <p>Connections</p>
+          </article>
+        </div>
 
-/* ================= MATRIX EFFECT ================= */
+        <div class="automation-panel glass-panel reveal">
+          <span class="panel-label">CORE INTEREST / 002</span>
+          <h3>API <em>+</em><br>Automation</h3>
+          <p>
+            I enjoy connecting tools, services and ideas into workflows that feel simple,
+            useful and repeatable.
+          </p>
 
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+          <div class="flow-map" aria-label="API automation workflow">
+            <div class="flow-node">API</div>
+            <span class="flow-line"></span>
+            <div class="flow-node">AUTOMATION</div>
+            <span class="flow-line"></span>
+            <div class="flow-node">TOOLS</div>
+            <span class="flow-line"></span>
+            <div class="flow-node result-node">RESULT</div>
+          </div>
 
-let fontSize;
-let columns;
-let drops;
+          <div class="interest-tags">
+            <span>Linux</span>
+            <span>Networking</span>
+            <span>Cybersecurity</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-function initMatrix(){
+    <!-- =========================
+         CONTACT
+    ========================== -->
+    <section class="section contact-section" id="contact" data-section-name="contact">
+      <div class="section-number">04 / 04</div>
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+      <div class="contact-layout">
+        <div class="section-heading reveal">
+          <div class="eyebrow">the clearing at the end</div>
+          <h2>Let's <em>Connect</em></h2>
+          <p>Have an idea, a question or a path worth exploring?</p>
+        </div>
 
-    fontSize = window.innerWidth < 768 ? 10 : 14;
+        <div class="contact-grid">
+          <a class="contact-card reveal" data-link="github" href="#" target="_blank" rel="noopener">
+            <span class="contact-icon">⌘</span>
+            <span><b>GitHub</b><small>My code & repositories</small></span>
+            <strong>↗</strong>
+          </a>
+          <a class="contact-card reveal" data-link="facebook" href="#" target="_blank" rel="noopener">
+            <span class="contact-icon">f</span>
+            <span><b>Facebook</b><small>Connect with me</small></span>
+            <strong>↗</strong>
+          </a>
+          <a class="contact-card reveal" data-link="email" href="#">
+            <span class="contact-icon">@</span>
+            <span><b>Email</b><small>Send a message</small></span>
+            <strong>↗</strong>
+          </a>
+          <a class="contact-card reveal" data-link="articles" href="#" target="_blank" rel="noopener">
+            <span class="contact-icon">◌</span>
+            <span><b>View Articles</b><small>Read what I write</small></span>
+            <strong>↗</strong>
+          </a>
+          <a class="contact-card reveal" data-link="projects" href="#" target="_blank" rel="noopener">
+            <span class="contact-icon">⌁</span>
+            <span><b>View Projects</b><small>Explore what I build</small></span>
+            <strong>↗</strong>
+          </a>
+        </div>
 
-    columns = Math.floor(canvas.width / fontSize);
+        <footer class="contact-footer reveal">
+          <span>C-FIREFLY / TOWHID</span>
+          <span>CODE · LEARN · BUILD · GROW</span>
+        </footer>
+      </div>
+    </section>
+  </main>
 
-    drops = [];
-
-    for(let i = 0; i < columns; i++){
-        drops[i] = 1;
-    }
-}
-
-function drawMatrix(){
-
-    ctx.fillStyle = "rgba(0,0,0,0.06)";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-
-    ctx.fillStyle = "#00ff88";
-    ctx.font = fontSize + "px monospace";
-
-    for(let i = 0; i < drops.length; i++){
-
-        const text = "01XYZABC";
-        const char = text[Math.floor(Math.random() * text.length)];
-
-        ctx.fillText(
-            char,
-            i * fontSize,
-            drops[i] * fontSize
-        );
-
-        if(
-            drops[i] * fontSize > canvas.height
-            &&
-            Math.random() > 0.975
-        ){
-            drops[i] = 0;
-        }
-
-        drops[i]++;
-    }
-}
-
-window.addEventListener("resize", initMatrix);
-
-initMatrix();
-
-setInterval(drawMatrix, 35);
-
-/* ================= TYPING EFFECT ================= */
-
-const text =
-"Never believe anyone blindly ";
-
-let i = 0;
-
-function typingEffect(){
-
-    if(i < text.length){
-
-        document.getElementById("typing").innerHTML += text.charAt(i);
-
-        i++;
-
-        setTimeout(typingEffect, 50);
-    }
-}
-
-typingEffect();
-
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
