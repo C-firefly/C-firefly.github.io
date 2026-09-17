@@ -1,334 +1,1398 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="C-Firefly, a cinematic developer portfolio for Towhid.">
-  <title>C-Firefly | Towhid</title>
+    <meta charset="UTF-8">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
 
-  <link rel="stylesheet" href="style.css">
+    <meta
+        name="theme-color"
+        content="#020914"
+    >
+
+    <meta
+        name="description"
+        content="C-Firefly — Towhid's developer portfolio."
+    >
+
+    <title>C-Firefly — Towhid</title>
+
+
+    <!-- ================================
+         FONTS
+    ================================= -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&family=Pacifico&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- ================================
+         ICONS
+    ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
+
 <body>
-  <div class="cursor-glow" aria-hidden="true"></div>
 
-  <div class="scene" aria-hidden="true">
+
+<!-- =========================================================
+     CURSOR GLOW
+========================================================= -->
+
+<div class="cursor-glow"></div>
+
+
+
+<!-- =========================================================
+     WORLD BACKGROUND
+========================================================= -->
+
+<div class="world" aria-hidden="true">
+
     <div class="sky"></div>
-    <div class="moon"></div>
-    <div class="sun"></div>
-    <div class="cloud cloud-one"></div>
-    <div class="cloud cloud-two"></div>
-    <div class="mountains"></div>
-    <div class="forest forest-back"></div>
-    <div class="forest forest-mid"></div>
-    <div class="forest forest-front"></div>
-    <div class="mist mist-one"></div>
-    <div class="mist mist-two"></div>
-    <div class="stars"></div>
-    <div class="birds birds-one"></div>
-    <div class="birds birds-two"></div>
-    <div class="firefly-field" id="fireflyField"></div>
-    <div class="grain"></div>
-  </div>
 
-  <header class="site-header">
-    <a class="brand" href="#intro" aria-label="C-Firefly home">
-      <span class="brand-mark">C</span>
-      <span>C-Firefly</span>
+    <div class="moon">
+        <span></span>
+    </div>
+
+    <div class="sun">
+        <span></span>
+    </div>
+
+
+    <!-- Clouds -->
+
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+
+
+    <!-- Birds -->
+
+    <div class="birds">
+
+        <span>⌁</span>
+        <span>⌁</span>
+        <span>⌁</span>
+        <span>⌁</span>
+
+    </div>
+
+
+    <!-- Stars -->
+
+    <div class="stars"></div>
+
+
+    <!-- Fireflies -->
+
+    <div class="fireflies">
+
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+
+    </div>
+
+
+    <!-- Forest -->
+
+    <div class="forest far"></div>
+    <div class="forest middle"></div>
+    <div class="forest near"></div>
+
+
+    <!-- Fog -->
+
+    <div class="fog fog-one"></div>
+    <div class="fog fog-two"></div>
+
+</div>
+
+
+
+<!-- =========================================================
+     DAY / NIGHT BUTTON
+========================================================= -->
+
+<button
+    class="theme-switch"
+    id="themeSwitch"
+    aria-label="Toggle day and night mode"
+>
+
+    <span class="theme-track"></span>
+
+    <span class="theme-sun">
+        <i class="fa-solid fa-sun"></i>
+    </span>
+
+    <span class="theme-moon">
+        <i class="fa-solid fa-moon"></i>
+    </span>
+
+    <span class="theme-knob"></span>
+
+</button>
+
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="navbar">
+
+    <a href="#intro" class="logo">
+
+        <div class="logo-c">
+
+            C
+
+            <!-- Signature Firefly -->
+
+            <svg
+                class="logo-firefly"
+                viewBox="0 0 100 60"
+                aria-hidden="true"
+            >
+
+                <defs>
+
+                    <filter id="glow">
+
+                        <feGaussianBlur
+                            stdDeviation="3"
+                            result="blur"
+                        />
+
+                        <feMerge>
+
+                            <feMergeNode in="blur"/>
+                            <feMergeNode in="SourceGraphic"/>
+
+                        </feMerge>
+
+                    </filter>
+
+                </defs>
+
+
+                <path
+                    class="fire-trail"
+                    d="M10 45 Q40 5 82 22"
+                />
+
+
+                <ellipse
+                    class="wing"
+                    cx="40"
+                    cy="22"
+                    rx="18"
+                    ry="7"
+                />
+
+                <ellipse
+                    class="wing"
+                    cx="42"
+                    cy="35"
+                    rx="17"
+                    ry="6"
+                />
+
+
+                <ellipse
+                    class="fire-body"
+                    cx="55"
+                    cy="29"
+                    rx="7"
+                    ry="13"
+                    filter="url(#glow)"
+                />
+
+            </svg>
+
+        </div>
+
+
+        <div class="logo-text">
+
+            <strong>C-Firefly</strong>
+
+            <small>Towhid</small>
+
+        </div>
+
     </a>
 
-    <nav class="desktop-nav" aria-label="Primary navigation">
-      <a class="nav-link active" href="#intro" data-section="intro">Home</a>
-      <a class="nav-link" href="#story" data-section="story">My Story</a>
-      <a class="nav-link" href="#skills" data-section="skills">Skills</a>
-      <a class="nav-link" href="#contact" data-section="contact">Contact</a>
+
+    <nav class="desktop-nav">
+
+        <a href="#intro" class="nav-item active">
+            <span>01</span>
+            Home
+        </a>
+
+        <a href="#story" class="nav-item">
+            <span>02</span>
+            My Story
+        </a>
+
+        <a href="#skills" class="nav-item">
+            <span>03</span>
+            Skills
+        </a>
+
+        <a href="#contact" class="nav-item">
+            <span>04</span>
+            Contact
+        </a>
+
     </nav>
+</header>
 
-    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-    </button>
-  </header>
 
-  <aside class="mobile-nav" aria-label="Mobile navigation">
-    <a class="nav-link active" href="#intro" data-section="intro">Home</a>
-    <a class="nav-link" href="#story" data-section="story">My Story</a>
-    <a class="nav-link" href="#skills" data-section="skills">Skills</a>
-    <a class="nav-link" href="#contact" data-section="contact">Contact</a>
-  </aside>
 
-  <button class="theme-toggle" type="button" aria-label="Switch to day mode" aria-pressed="false">
-    <span class="theme-icon moon-icon"></span>
-    <span class="theme-icon sun-icon"></span>
-    <span class="toggle-knob"></span>
-  </button>
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
-  <main class="page">
-    <!-- =========================
-         INTRO
-    ========================== -->
-    <section class="section intro-section" id="intro" data-section-name="intro">
-      <div class="section-number">01 / 04</div>
+<main id="main">
 
-      <div class="intro-content">
-        <div class="profile-wrap reveal">
-          <div class="profile-ring"></div>
-          <img class="profile-image" src="assets/profile.png" alt="Towhid profile placeholder">
-          <span class="profile-status">available to build</span>
+
+<!-- =========================================================
+     SECTION 01 — INTRO
+========================================================= -->
+
+<section
+    id="intro"
+    class="section intro-section"
+>
+
+
+    <div class="intro-scene">
+
+
+        <!-- Profile -->
+
+        <div class="profile-wrap">
+
+            <div class="profile-ring ring-one"></div>
+            <div class="profile-ring ring-two"></div>
+
+
+            <div class="profile-picture">
+
+                <img
+                    src="assets/profile.jpg"
+                    alt="Towhid profile picture"
+                    onerror="this.style.display='none'; this.parentElement.classList.add('profile-fallback')"
+                >
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
         </div>
 
-        <div class="eyebrow reveal">developer / learner / builder</div>
 
-        <h1 class="hero-title reveal">
-          <span class="title-c">
-            C
-            <span class="signature-firefly" aria-hidden="true">
-              <span class="fly-body"></span>
-              <span class="fly-wing wing-left"></span>
-              <span class="fly-wing wing-right"></span>
-              <span class="fly-trail"></span>
+
+        <!-- Intro content -->
+
+        <div class="intro-copy">
+
+            <div class="ethical-intro" aria-hidden="true">
+                <svg viewBox="0 0 700 170" role="presentation">
+                    <defs>
+                        <path id="ethicsArc" d="M 70 135 Q 350 15 630 135" />
+                    </defs>
+                    <text>
+                        <textPath href="#ethicsArc" startOffset="50%">
+                            Be Practical, Be Ethical • Stay aware, stay secure
+                        </textPath>
+                    </text>
+                </svg>
+                <span>- C-Firefly</span>
+            </div>
+
+            <div class="eyebrow">
+
+                <span class="status-dot"></span>
+
+                DEVELOPER • LEARNER • BUILDER
+
+            </div>
+
+
+            <h1 class="hero-title">
+
+                <span class="hero-c">
+                    C
+                </span>
+
+                <span class="hero-firefly-text">
+                    -Firefly
+                </span>
+
+            </h1>
+
+
+            <div class="hero-name">
+                Towhid
+            </div>
+
+
+            <p class="hero-description">
+
+                I learn by building,
+                explore through curiosity,
+                and turn ideas into
+                <strong>code, APIs & automation.</strong>
+
+            </p>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="#story"
+                    class="button button-primary"
+                >
+
+                    Discover My Story
+
+                    <i class="fa-solid fa-arrow-down"></i>
+
+                </a>
+
+
+                <a
+                    href="#projects"
+                    class="button button-ghost"
+                >
+
+                    Explore Projects
+
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-motto">
+
+                <span>CODE</span>
+                <b>•</b>
+                <span>LEARN</span>
+                <b>•</b>
+                <span>AUTOMATE</span>
+                <b>•</b>
+                <span>GROW</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NIGHT CHARACTER
+        ================================================== -->
+
+        <div class="night-scene-character">
+
+            <div class="desk">
+
+                <div class="laptop">
+
+                    <div class="laptop-screen">
+
+                        <div class="code-line">
+                            while True:
+                        </div>
+
+                        <div class="code-line green">
+                            try: runsecret_project()
+                        </div>
+
+                        <div class="code-line">
+                            except: error
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="coffee">
+
+                    <span class="coffee-steam steam-one"></span>
+                    <span class="coffee-steam steam-two"></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="night-person">
+
+                <div class="head"></div>
+
+                <div class="body"></div>
+
+                <div class="arm arm-left"></div>
+                <div class="arm arm-right"></div>
+
+            </div>
+
+        </div>
+
+        <!-- DAY MODE: static decorative trees -->
+        <div class="day-trees" aria-hidden="true">
+            <div class="day-tree tree-small tree-left">
+                <span class="tree-trunk"></span><span class="tree-crown"></span>
+            </div>
+            <div class="day-tree tree-large tree-center-left">
+                <span class="tree-trunk"></span><span class="tree-crown"></span>
+            </div>
+            <div class="day-tree tree-medium tree-right">
+                <span class="tree-trunk"></span><span class="tree-crown"></span>
+            </div>
+            <div class="day-tree tree-tiny tree-far-right">
+                <span class="tree-trunk"></span><span class="tree-crown"></span>
+            </div>
+        </div>
+
+    </div>
+
+
+    <a
+        href="#story"
+        class="scroll-cue"
+    >
+
+        <span>SCROLL TO EXPLORE</span>
+
+        <div class="scroll-line"></div>
+
+        <i class="fa-solid fa-chevron-down"></i>
+
+    </a>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 02 — STORY
+========================================================= -->
+
+<section
+    id="story"
+    class="section story-section"
+>
+
+
+    <div class="section-inner">
+
+
+        <div class="section-heading reveal">
+
+            <span class="section-tag">
+                02 / MY STORY
             </span>
-          </span><span>-Firefly</span>
-        </h1>
 
-        <p class="hero-name reveal">Towhid</p>
 
-        <p class="hero-description reveal">
-          I explore the space where code, curiosity and automation meet.
+            <h2>
+                From Curiosity
+                <span>To Code.</span>
+            </h2>
+
+
+            <p>
+                Every journey begins with a question.
+                Mine began with curiosity about how technology works.
+            </p>
+
+        </div>
+
+
+
+        <div class="story-layout">
+
+
+            <!-- Timeline -->
+
+            <div class="timeline">
+
+
+                <article class="story-item reveal">
+
+                    <div class="story-marker">
+
+                        <i class="fa-solid fa-lightbulb"></i>
+
+                    </div>
+
+
+                    <div class="story-text">
+
+                        <small>THE BEGINNING</small>
+
+                        <h3>Curiosity</h3>
+
+                        <p>
+                            I became fascinated by computers,
+                            websites and the hidden logic behind
+                            the things I use every day.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="story-item reveal">
+
+                    <div class="story-marker">
+
+                        <i class="fa-solid fa-code"></i>
+
+                    </div>
+
+
+                    <div class="story-text">
+
+                        <small>FIRST STEPS</small>
+
+                        <h3>Writing Code</h3>
+
+                        <p>
+                            HTML, CSS and programming introduced
+                            me to a completely different way of
+                            thinking — creating instead of only consuming.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="story-item reveal">
+
+                    <div class="story-marker">
+
+                        <i class="fa-solid fa-terminal"></i>
+
+                    </div>
+
+
+                    <div class="story-text">
+
+                        <small>EXPLORATION</small>
+
+                        <h3>Linux & Termux</h3>
+
+                        <p>
+                            Working from mobile pushed me deeper
+                            into terminals, Linux, development tools
+                            and practical experimentation.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="story-item reveal">
+
+                    <div class="story-marker">
+
+                        <i class="fa-solid fa-bolt"></i>
+
+                    </div>
+
+
+                    <div class="story-text">
+
+                        <small>THE DIRECTION</small>
+
+                        <h3>APIs & Automation</h3>
+
+                        <p>
+                            I became interested in connecting tools,
+                            APIs and automation to make useful systems
+                            work together.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="story-item reveal">
+
+                    <div class="story-marker">
+
+                        <i class="fa-solid fa-seedling"></i>
+
+                    </div>
+
+
+                    <div class="story-text">
+
+                        <small>NOW</small>
+
+                        <h3>Still Growing</h3>
+
+                        <p>
+                            I'm still learning, experimenting and
+                            building. The goal is not to know everything —
+                            it's to keep moving forward.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+
+            <!-- Achievement card -->
+
+            <aside class="journey-card reveal">
+
+
+                <div class="card-top">
+
+                    <span>MY JOURNEY</span>
+
+                    <i class="fa-solid fa-compass"></i>
+
+                </div>
+
+
+                <div class="journey-orbit">
+
+                    <div class="orbit-ring"></div>
+
+                    <div class="orbit-core">
+
+                        <i class="fa-solid fa-code"></i>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Learn.
+                    <span>Build.</span>
+                    Automate.
+                </h3>
+
+
+                <p>
+                    I'm interested in the space where
+                    development, APIs, automation,
+                    networking and cybersecurity meet.
+                </p>
+
+
+                <div class="journey-points">
+
+                    <span>
+                        <i class="fa-solid fa-check"></i>
+                        Personal Projects
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-check"></i>
+                        Linux / Termux
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-check"></i>
+                        Web Development
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-check"></i>
+                        APIs & Automation
+                    </span>
+
+                </div>
+
+
+                <div class="quote">
+
+                    “Small steps every day
+                    lead to big results.”
+
+                </div>
+
+
+                <div class="signature">
+                    — Towhid
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 03 — SKILLS
+========================================================= -->
+
+<section
+    id="skills"
+    class="section skills-section"
+>
+
+
+    <div class="section-inner">
+
+
+        <div class="section-heading reveal">
+
+            <span class="section-tag">
+                03 / SKILLS
+            </span>
+
+
+            <h2>
+                Tools I
+                <span>Work With.</span>
+            </h2>
+
+
+            <p>
+                A mobile-first developer exploring code,
+                systems, APIs and automation.
+            </p>
+
+        </div>
+
+
+
+        <div class="skills-layout">
+
+
+            <!-- Main skills -->
+
+            <div class="skill-groups">
+
+
+                <div class="skill-group reveal">
+
+                    <div class="skill-group-head">
+
+                        <i class="fa-solid fa-code"></i>
+
+                        <h3>Development</h3>
+
+                    </div>
+
+
+                    <div class="skill-icons">
+
+                        <div class="skill-icon">
+
+                            <i class="fa-brands fa-html5"></i>
+
+                            <span>HTML</span>
+
+                        </div>
+
+
+                        <div class="skill-icon">
+
+                            <i class="fa-brands fa-css3-alt"></i>
+
+                            <span>CSS</span>
+
+                        </div>
+
+
+                        <div class="skill-icon">
+
+                            <i class="fa-brands fa-js"></i>
+
+                            <span>JavaScript</span>
+
+                        </div>
+
+
+                        <div class="skill-icon">
+
+                            <i class="fa-brands fa-python"></i>
+
+                            <span>Python</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="skill-group reveal">
+
+                    <div class="skill-group-head">
+
+                        <i class="fa-solid fa-mobile-screen"></i>
+
+                        <h3>Mobile Workflow</h3>
+
+                    </div>
+
+
+                    <div class="skill-icons">
+
+                        <div class="skill-icon">
+
+                            <i class="fa-solid fa-code"></i>
+
+                            <span>Acode</span>
+
+                        </div>
+
+
+                        <div class="skill-icon">
+
+                            <i class="fa-solid fa-terminal"></i>
+
+                            <span>Termux</span>
+
+                        </div>
+
+
+                        <div class="skill-icon">
+
+                            <i class="fa-brands fa-git-alt"></i>
+
+                            <span>Git</span>
+
+                        </div>
+
+
+                        <div class="skill-icon">
+
+                            <i class="fa-brands fa-github"></i>
+
+                            <span>GitHub</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="skill-group reveal">
+
+                    <div class="skill-group-head">
+
+                        <i class="fa-solid fa-brain"></i>
+
+                        <h3>AI & Tools</h3>
+
+                    </div>
+
+
+                    <div class="skill-icons">
+
+                        <div class="skill-icon ai">
+
+                            <i class="fa-brands fa-google"></i>
+
+                            <span>Gemini</span>
+
+                        </div>
+
+
+                        <div class="skill-icon ai">
+
+                            <i class="fa-brands fa-openai"></i>
+
+                            <span>ChatGPT</span>
+
+                        </div>
+
+
+                        <div class="skill-icon">
+
+                            <i class="fa-solid fa-plug"></i>
+
+                            <span>APIs</span>
+
+                        </div>
+
+
+                        <div class="skill-icon">
+
+                            <i class="fa-solid fa-gears"></i>
+
+                            <span>Automation</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+                <div class="skill-group reveal">
+                    <div class="skill-group-head">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <h3>Focus & Skills</h3>
+                    </div>
+
+                    <div class="skill-icons focus-skills">
+                        <div class="skill-icon">
+                            <i class="fa-brands fa-linux"></i>
+                            <span>Linux</span>
+                        </div>
+
+                        <div class="skill-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Cyber Security</span>
+                        </div>
+
+                        <div class="skill-icon">
+                            <i class="fa-solid fa-server"></i>
+                            <span>Backend Developer</span>
+                        </div>
+
+                        <div class="skill-icon">
+                            <i class="fa-brands fa-telegram"></i>
+                            <span>Telegram Bot</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Automation visual -->
+
+            <div class="automation-card reveal">
+
+
+                <span class="automation-label">
+                    SYSTEM / 03
+                </span>
+
+
+                <h3>
+                    API ×
+                    <span>Automation</span>
+                </h3>
+
+
+                <p>
+                    I like making different tools communicate,
+                    automate repetitive work and turn ideas
+                    into useful workflows.
+                </p>
+
+
+                <div class="automation-flow">
+
+                    <div class="flow-node">
+
+                        <i class="fa-solid fa-globe"></i>
+
+                        <span>API</span>
+
+                    </div>
+
+
+                    <div class="flow-line">
+                        <span></span>
+                    </div>
+
+
+                    <div class="flow-node">
+
+                        <i class="fa-solid fa-gears"></i>
+
+                        <span>Logic</span>
+
+                    </div>
+
+
+                    <div class="flow-line">
+                        <span></span>
+                    </div>
+
+
+                    <div class="flow-node">
+
+                        <i class="fa-solid fa-bolt"></i>
+
+                        <span>Result</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="terminal-box">
+
+                    <div class="terminal-head">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+
+                    <code>
+
+                        <b>$</b> connect(api)<br>
+                        <b>$</b> automate(workflow)<br>
+                        <b class="terminal-green">$</b>
+                        system.execute()
+
+                    </code>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="skills-extra-grid">
+
+            <div class="achievements-card reveal">
+                <div class="extra-label">ACHIEVEMENTS</div>
+
+                <div class="achievement-list">
+                    <div>
+                        <strong>Projects</strong>
+                        <span>Building personal projects</span>
+                    </div>
+
+                    <div>
+                        <strong>Linux & Termux</strong>
+                        <span>Exploring command-line tools</span>
+                    </div>
+
+                    <div>
+                        <strong>GitHub</strong>
+                        <span>Sharing and managing code</span>
+                    </div>
+
+                    <div>
+                        <strong>Cybersecurity</strong>
+                        <span>Learning security concepts</span>
+                    </div>
+                </div>
+
+                <div class="achievement-quote">
+                    “Small steps every day lead to big results.”
+                </div>
+
+                <div class="achievement-signature">— Towhid</div>
+            </div>
+
+
+            <div class="currently-card reveal">
+                <div class="extra-label">CURRENTLY LEARNING</div>
+
+                <div class="learning-chips">
+                    <b>Cybersecurity</b>
+                    <b>Networking</b>
+                    <b>JavaScript</b>
+                    <b>Web Development</b>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 04 — CONTACT
+========================================================= -->
+
+<section
+    id="contact"
+    class="section contact-section"
+>
+
+
+    <div class="contact-inner">
+
+
+        <span class="section-tag reveal">
+            04 / CONTACT
+        </span>
+
+
+        <h2 class="reveal">
+
+            Let's
+            <span>Connect.</span>
+
+        </h2>
+
+
+        <p class="contact-intro reveal">
+
+            Have an idea, project, question,
+            or simply want to say hello?
+
+            <br>
+
+            The fireflies are always awake.
+
         </p>
 
-        <div class="hero-actions reveal">
-          <a class="button button-primary" href="#story">Enter the story <span>↘</span></a>
-          <a class="button button-ghost" href="#contact">Let's connect <span>↗</span></a>
+
+
+        <div class="contact-grid reveal">
+
+
+            <a
+                class="contact-card"
+                href="YOUR_GITHUB_URL"
+                target="_blank"
+                rel="noopener"
+            >
+
+                <div class="contact-card-icon">
+                    <i class="fa-brands fa-github"></i>
+                </div>
+
+
+                <div>
+
+                    <strong>GitHub</strong>
+
+                    <span>
+                        Code & repositories
+                    </span>
+
+                </div>
+
+
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+
+
+            <a
+                class="contact-card"
+                href="YOUR_FACEBOOK_URL"
+                target="_blank"
+                rel="noopener"
+            >
+
+                <div class="contact-card-icon">
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+
+
+                <div>
+
+                    <strong>Facebook</strong>
+
+                    <span>
+                        Connect with me
+                    </span>
+
+                </div>
+
+
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+
+
+            <a
+                class="contact-card"
+                href="mailto:YOUR_EMAIL@example.com"
+            >
+
+                <div class="contact-card-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+
+
+                <div>
+
+                    <strong>Email</strong>
+
+                    <span>
+                        Send a message
+                    </span>
+
+                </div>
+
+
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+
+
+            <a
+                class="contact-card featured-contact"
+                href="YOUR_ARTICLES_URL"
+                target="_blank"
+                rel="noopener"
+            >
+
+                <div class="contact-card-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+
+
+                <div>
+
+                    <strong>View Articles</strong>
+
+                    <span>
+                        Read my thoughts
+                    </span>
+
+                </div>
+
+
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+
+
+            <a
+                class="contact-card featured-contact"
+                href="YOUR_PROJECTS_URL"
+                target="_blank"
+                rel="noopener"
+            >
+
+                <div class="contact-card-icon">
+                    <i class="fa-solid fa-cubes"></i>
+                </div>
+
+
+                <div>
+
+                    <strong>View Projects</strong>
+
+                    <span>
+                        Explore what I build
+                    </span>
+
+                </div>
+
+
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+            </a>
+
         </div>
 
-        <div class="hero-meta reveal">
-          <span><i></i> exploring from mobile</span>
-          <span>scroll to wander</span>
-        </div>
-      </div>
 
-      <div class="night-workspace" aria-label="Night coding workspace">
-        <div class="desk-light"></div>
-        <div class="desk"></div>
-        <div class="laptop">
-          <div class="laptop-screen">
-            <span>const</span> curiosity = <b>true</b>;<br>
-            <span>while</span> (curiosity) {<br>
-            &nbsp;&nbsp;build();
-          </div>
-        </div>
-        <div class="coffee">
-          <div class="steam steam-one"></div>
-          <div class="steam steam-two"></div>
-          <div class="cup"></div>
-        </div>
-        <img class="character character-night" src="assets/character-night.png" alt="Night coding character placeholder">
-      </div>
 
-      <div class="scroll-cue"><span></span> scroll to explore</div>
-    </section>
+        <div class="contact-footer reveal">
 
-    <!-- =========================
-         MY STORY
-    ========================== -->
-    <section class="section story-section" id="story" data-section-name="story">
-      <div class="section-number">02 / 04</div>
-
-      <div class="section-heading reveal">
-        <div class="eyebrow">a path through the trees</div>
-        <h2>My <em>Story</em></h2>
-        <p>From curiosity to code.</p>
-      </div>
-
-      <div class="story-layout">
-        <div class="story-copy glass-panel reveal">
-          <span class="panel-label">FIELD NOTES / 001</span>
-          <p>
-            My journey is still being written. I started with questions, followed them into code,
-            and kept building small experiments to understand how digital systems connect.
-          </p>
-          <p class="editable-note">
-            [Replace this paragraph with your real coding journey, milestones and personal goals.]
-          </p>
-          <div class="signature">— Towhid</div>
-        </div>
-
-        <div class="timeline" aria-label="Developer journey timeline">
-          <article class="timeline-item reveal">
-            <span class="timeline-marker">01</span>
-            <div>
-              <small>BEGINNING / EDITABLE</small>
-              <h3>Curiosity arrived first</h3>
-              <p>[Add how you first became interested in technology and coding.]</p>
+            <div class="footer-firefly">
+                ✦
             </div>
-          </article>
 
-          <article class="timeline-item reveal">
-            <span class="timeline-marker">02</span>
+
             <div>
-              <small>FIRST CODE / EDITABLE</small>
-              <h3>Learning by making</h3>
-              <p>[Add the first language, tutorial or project that made code feel real.]</p>
+
+                <strong>C-Firefly</strong>
+
+                <span>by Towhid</span>
+
             </div>
-          </article>
 
-          <article class="timeline-item reveal">
-            <span class="timeline-marker">03</span>
-            <div>
-              <small>EXPLORING / EDITABLE</small>
-              <h3>Systems behind the screen</h3>
-              <p>Linux, Termux, networking and cybersecurity became places to investigate.</p>
-            </div>
-          </article>
 
-          <article class="timeline-item reveal">
-            <span class="timeline-marker">04</span>
-            <div>
-              <small>NOW / EDITABLE</small>
-              <h3>Building useful connections</h3>
-              <p>Focused on web development, APIs, automation and experiments that solve real problems.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+            <div class="footer-line"></div>
 
-    <!-- =========================
-         SKILLS
-    ========================== -->
-    <section class="section skills-section" id="skills" data-section-name="skills">
-      <div class="section-number">03 / 04</div>
 
-      <div class="section-heading reveal">
-        <div class="eyebrow">the tools around the campfire</div>
-        <h2>My <em>Skills</em></h2>
-        <p>Tools I work with and systems I want to understand.</p>
-      </div>
+            <span>
+                Code • Learn • Automate • Grow
+            </span>
 
-      <div class="skills-layout">
-        <div class="skill-cloud">
-          <article class="skill-card reveal">
-            <span class="skill-icon">&lt;/&gt;</span>
-            <h3>HTML</h3>
-            <p>Structure</p>
-          </article>
-          <article class="skill-card reveal">
-            <span class="skill-icon">#</span>
-            <h3>CSS</h3>
-            <p>Interfaces</p>
-          </article>
-          <article class="skill-card reveal">
-            <span class="skill-icon">JS</span>
-            <h3>JavaScript</h3>
-            <p>Interaction</p>
-          </article>
-          <article class="skill-card reveal">
-            <span class="skill-icon">Py</span>
-            <h3>Python</h3>
-            <p>Logic</p>
-          </article>
-          <article class="skill-card reveal">
-            <span class="skill-icon">A</span>
-            <h3>Acode</h3>
-            <p>Mobile IDE</p>
-          </article>
-          <article class="skill-card reveal">
-            <span class="skill-icon">$</span>
-            <h3>Termux</h3>
-            <p>Terminal</p>
-          </article>
-          <article class="skill-card reveal">
-            <span class="skill-icon">↗</span>
-            <h3>GitHub</h3>
-            <p>Projects</p>
-          </article>
-          <article class="skill-card reveal">
-            <span class="skill-icon">✺</span>
-            <h3>APIs</h3>
-            <p>Connections</p>
-          </article>
         </div>
 
-        <div class="automation-panel glass-panel reveal">
-          <span class="panel-label">CORE INTEREST / 002</span>
-          <h3>API <em>+</em><br>Automation</h3>
-          <p>
-            I enjoy connecting tools, services and ideas into workflows that feel simple,
-            useful and repeatable.
-          </p>
+    </div>
 
-          <div class="flow-map" aria-label="API automation workflow">
-            <div class="flow-node">API</div>
-            <span class="flow-line"></span>
-            <div class="flow-node">AUTOMATION</div>
-            <span class="flow-line"></span>
-            <div class="flow-node">TOOLS</div>
-            <span class="flow-line"></span>
-            <div class="flow-node result-node">RESULT</div>
-          </div>
+</section>
 
-          <div class="interest-tags">
-            <span>Linux</span>
-            <span>Networking</span>
-            <span>Cybersecurity</span>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- =========================
-         CONTACT
-    ========================== -->
-    <section class="section contact-section" id="contact" data-section-name="contact">
-      <div class="section-number">04 / 04</div>
 
-      <div class="contact-layout">
-        <div class="section-heading reveal">
-          <div class="eyebrow">the clearing at the end</div>
-          <h2>Let's <em>Connect</em></h2>
-          <p>Have an idea, a question or a path worth exploring?</p>
-        </div>
+</main>
 
-        <div class="contact-grid">
-          <a class="contact-card reveal" data-link="github" href="#" target="_blank" rel="noopener">
-            <span class="contact-icon">⌘</span>
-            <span><b>GitHub</b><small>My code & repositories</small></span>
-            <strong>↗</strong>
-          </a>
-          <a class="contact-card reveal" data-link="facebook" href="#" target="_blank" rel="noopener">
-            <span class="contact-icon">f</span>
-            <span><b>Facebook</b><small>Connect with me</small></span>
-            <strong>↗</strong>
-          </a>
-          <a class="contact-card reveal" data-link="email" href="#">
-            <span class="contact-icon">@</span>
-            <span><b>Email</b><small>Send a message</small></span>
-            <strong>↗</strong>
-          </a>
-          <a class="contact-card reveal" data-link="articles" href="#" target="_blank" rel="noopener">
-            <span class="contact-icon">◌</span>
-            <span><b>View Articles</b><small>Read what I write</small></span>
-            <strong>↗</strong>
-          </a>
-          <a class="contact-card reveal" data-link="projects" href="#" target="_blank" rel="noopener">
-            <span class="contact-icon">⌁</span>
-            <span><b>View Projects</b><small>Explore what I build</small></span>
-            <strong>↗</strong>
-          </a>
-        </div>
 
-        <footer class="contact-footer reveal">
-          <span>C-FIREFLY / TOWHID</span>
-          <span>CODE · LEARN · BUILD · GROW</span>
-        </footer>
-      </div>
-    </section>
-  </main>
+<!-- =========================================================
+     SCRIPT
+========================================================= -->
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
